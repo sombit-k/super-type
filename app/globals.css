@@ -19,6 +19,12 @@
   }
 }
 
+@layer components{
+  .lsnbtn{
+    @apply  bg-gray-300 p-2 text-gray-800 rounded-lg shadow-md mb-2  justify-center hover:bg-gray-400 transition-colors duration-300 text-center mx-3
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
