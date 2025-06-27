@@ -19,7 +19,7 @@ export default async function Home(){
 
 
         <div className="bg-gray-200 p-4 bg text-gray-800 rounded-lg shadow-md col-span-3 col-start-2 gap-4">
-          <Tutorial />
+          <Tutorial id={0}/>
         </div>
 
         <Dashboard/>
