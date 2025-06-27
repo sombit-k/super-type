@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Sidebar from '@/components/sidebar';
 import Tutorial from '@/components/tutorial';
 import Dashboard from '@/components/dashboard';
-import Instructions from '@/components/Instructions';
 export default async function LessonPage({ params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id;
 
@@ -20,7 +19,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
 
 
         <div className="bg-gray-200 p-4 bg text-gray-800 rounded-lg shadow-md col-span-3 col-start-2 gap-4">
-          <Instructions id={id} />
+          <TypeArea id={id} />
         </div>
 
         <Dashboard/>
