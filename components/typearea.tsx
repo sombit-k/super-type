@@ -29,9 +29,9 @@ const TypeArea = ({ id }: { id: string }) => {
 
   return (
     <>
-      <div className="flex flex-col h-4/5 bg-gray-800 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray]">
-        <div className="flex  h-1/5 border-2 border-white-500 text-amber-50 m-3.5 justify-around rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white]">
-          <p>hi</p>
+      <div className="flex flex-col h-4/5 bg-gray-800 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray] align-bottom">
+        <div className="flex  h-1/5 border-2 border-white-500 text-amber-50 m-3.5 justify-center rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white]">
+          <p className="flex flex-row-reverse content-bottom items-center">Start typing the text below!</p>
         </div>
         <div className="flex flex-wrap h-4/5 border-2 border-white-500 bg-gray-800 text-amber-50 mx-3.5 my-3.5  rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white] px-5 py-5 overflow-auto ">
           {Array.from({ length: l - 1 }).map((_, i) => (
