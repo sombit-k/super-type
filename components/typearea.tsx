@@ -180,13 +180,13 @@ const TypeArea = ({ id }: { id: string }) => {
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      // console.log("Global key pressed:", e.key);
       const pressedKey = e.key;
-      // console.log("pressed key is", pressedKey,"sentence",sentence)
-      if (pressedKey === sentence[index + wordIndex]) {
+      console.log("index is", index, "wordIndex is", wordIndex,"array[index][wordIndex] is", array[index][wordIndex]);
+      if (pressedKey === array[index][wordIndex] || wordIndex == array[index].length) {
         if (pressedKey === " ") {
           iPlus(index + 1);
           wIPlus(0);
+          // console.log("index is", index, "wordIndex is", wordIndex);
           setCorrectVector((prev) => {
             const newVector = [...prev];
             console.log("new vector is", newVector);
@@ -197,9 +197,11 @@ const TypeArea = ({ id }: { id: string }) => {
         else {
           wIPlus(wordIndex + 1);
           setCorrectKeyPressed(true);
+          // console.log("index is", index, "wordIndex is", wordIndex);
+
           setCorrectVector((prev) => {
             const newVector = [...prev];
-            console.log("new vector is", newVector);
+            // console.log("new vector is", newVector);
             newVector[index][wordIndex] = 1;
             return newVector;
           });
