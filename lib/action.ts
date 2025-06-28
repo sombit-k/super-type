@@ -3,7 +3,7 @@ export const generateWords = (id: string): string[] => {
 
     const createWords = (id: string, letters: string[], inclLastLetter: number) => {
         return Array.from({ length: arrLength }, () => {
-            const wordLength = Math.random() < 0.5 ? 4 : 5;
+            const wordLength = Math.random() < 0.5 ? 4 : (Math.random() < 0.7 ? 3 : 5);
             return Array.from({ length: wordLength }, () => {
                 const randomIndex = Math.floor(Math.random() * (letters.length - inclLastLetter));
                 return letters[randomIndex];
@@ -16,7 +16,7 @@ export const generateWords = (id: string): string[] => {
     const l4 = ['n', 'm', ',', '.', '/'];
     const l5 = ['q', 'w', 'e', 'r', 't'];//left
     const l6 = ['y', 'u', 'i', 'o', 'p'];
-    const arrLength = 72;
+    const arrLength = 40;
     switch (id) {
         case "1":
             return createWords(id, l1, 1);

@@ -1,19 +1,35 @@
 "use client";
 import { generateWords } from "@/lib/action";
+import Link from "next/link";
 import React, { useEffect, useState } from 'react'
 const TypeArea = ({ id }: { id: string }) => {
-  console.log("id is", id)
-
-  const array = generateWords(id);
-  const l = 72;
-
-  // Use useState instead of useActionState
   const [btnStates, setBtnStates] = useState({
     focus: false,
     start: false,
   });
+  const [array, setArray] = useState<string[]>([]);
+  const [userInput, setUserInput] = useState("");
 
-  // Handler for button clicks
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  console.log("Key pressed:", e.key);
+  // You can also update state or compare here
+};
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInput(e.target.value);
+    // Example: compare to stored sentence (array.join(' '))
+    // if (e.target.value === array.join(' ')) { ... }
+  };
+
+  useEffect(() => {
+    const words = generateWords(id);
+    console.log(words)
+
+    setArray(words);
+  }, [id]);
+
+
+  const l = array.length;
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;
     if (value === "Focus") {
@@ -23,27 +39,44 @@ const TypeArea = ({ id }: { id: string }) => {
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     console.log("Button states", btnStates);
   }, [btnStates]);
 
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      console.log("Global key pressed:", e.key);
+      // You can update state or compare here
+    };
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
+
   return (
     <>
-      <div className="flex flex-col h-4/5 bg-gray-800 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray] align-bottom">
+      <div className="flex flex-col h-4/5 bg-gray-800 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray] align-bottom ">
         <div className="flex  h-1/5 border-2 border-white-500 text-amber-50 m-3.5 justify-center rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white]">
           <p className="flex flex-row-reverse content-bottom items-center">Start typing the text below!</p>
         </div>
         <div className="flex flex-wrap h-4/5 border-2 border-white-500 bg-gray-800 text-amber-50 mx-3.5 my-3.5  rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white] px-5 py-5 overflow-auto ">
           {Array.from({ length: l - 1 }).map((_, i) => (
-            <div className='flex align-self-center max-h-5 my-1' key={i}>
+            <div className='flex align-self-center max-h-5 my-1 mx-3 text-2xl' key={i}>
               {array[i] + "\u00A0"}
             </div>
           ))}
         </div>
       </div>
-      <div className="flex flex-row h-1/5 bg-amber-950 text-amber-50 my-3.5 justify-around gap-4">
-        <button type="button" name="action" value="Focus" onClick={handleButtonClick}>Focus Mode</button>
-        <button type="button" name="action" value="Start" onClick={handleButtonClick}>Start Exercise</button>
+      <div className="  h-1/5 mx-3 my-3 flex justify-between items-center">
+        <div className=" justify-center items-center mr-0">
+          <button onClick={handleButtonClick} value="Focus" className="lsnbtn w-full justify-center items-center bg-green-800 text-white hover:bg-gray-700 transition-colors duration-100 text-center mx-0" key={id} >
+            Focus Mode
+          </button>
+        </div>
+        <div className="bg-black-100 mx-5">
+          <button onClick={handleButtonClick} value="Start" className="lsnbtn w-full justify-center items-center bg-green-800 text-white hover:bg-gray-700 transition-colors duration-100 text-center mx-5" key={id} >
+            Restart
+          </button>
+        </div>
       </div>
     </>
   )

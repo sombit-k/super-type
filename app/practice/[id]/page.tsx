@@ -18,7 +18,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
         </div>
 
 
-        <div className="bg-gray-200 p-4 bg text-gray-800 rounded-lg shadow-md col-span-3 col-start-2 gap-4">
+        <div className="bg-gray-900 p-4 bg text-gray-800 rounded-lg shadow-md col-span-3 col-start-2 gap-4">
           <TypeArea id={id} />
         </div>
 
