@@ -3,23 +3,20 @@ import { generateWords } from "@/lib/action";
 import Link from "next/link";
 import React, { useEffect, useState } from 'react'
 const TypeArea = ({ id }: { id: string }) => {
+
+
+
+
+
   const [btnStates, setBtnStates] = useState({
     focus: false,
     start: false,
   });
   const [array, setArray] = useState<string[]>([]);
-  const [userInput, setUserInput] = useState("");
+  const [i,iPlus]=useState<number>(0);
+  const [sentence, setSentence] = useState<string>("");
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  console.log("Key pressed:", e.key);
-  // You can also update state or compare here
-};
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput(e.target.value);
-    // Example: compare to stored sentence (array.join(' '))
-    // if (e.target.value === array.join(' ')) { ... }
-  };
 
   useEffect(() => {
     const words = generateWords(id);
@@ -28,6 +25,9 @@ const TypeArea = ({ id }: { id: string }) => {
     setArray(words);
   }, [id]);
 
+  useEffect(() => {
+    setSentence(array.join(" "));
+  },[array]);
 
   const l = array.length;
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,12 +45,20 @@ const TypeArea = ({ id }: { id: string }) => {
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      console.log("Global key pressed:", e.key);
-      // You can update state or compare here
+      // console.log("Global key pressed:", e.key);
+      const pressedKey = e.key;
+      // console.log("pressed key is", pressedKey,"sentence",sentence)
+      if(pressedKey === sentence[i]) {
+        iPlus(i + 1);
+        console.log("Correct key pressed:", pressedKey);
+      }
+      else{
+        console.log("Incorrect key pressed:", pressedKey,"i value is",i,"sentence[i] is",sentence[i]);
+      }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
     return () => window.removeEventListener("keydown", handleGlobalKeyDown);
-  }, []);
+  }, [array,sentence,i]);
 
   return (
     <>
