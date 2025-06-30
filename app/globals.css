@@ -11,7 +11,12 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
+@theme {
+  --color-dark1-500: #210F37;
+  --color-dark2-500: #4F1C51;
+  --color-dark3-500: #A55B4B;
+  --color-dark4-500: #DCA06D;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -21,14 +26,17 @@
 
 @layer components{
   .lsnbtn{
-    @apply  bg-gray-300 p-2 text-gray-800 rounded-lg shadow-md mb-2  justify-center hover:bg-gray-400 transition-colors duration-300 text-center mx-3;
+    @apply  bg-dark3-500 p-2 text-white rounded-lg shadow-md mb-2  justify-center hover:bg-gray-400 transition-colors duration-300 text-center mx-3;
   }
   .tbtn {
-    @apply  p-2 text-gray-800 rounded-lg shadow-md mb-2   hover:bg-green-700 transition-colors duration-300 text-center  w-full justify-center items-center bg-green-800 text-white  text-center mx-5;
+    @apply  p-2 rounded-lg shadow-md mb-2   hover:bg-green-700 transition-colors duration-300 text-center  w-full justify-center items-center bg-green-800 text-white  mx-5;
 
   }
   .dtbtn{
-    @apply  p-2 text-gray-800 rounded-lg shadow-md mb-2   bg-gray-400 text-center  w-full justify-center items-center  text-center mx-5;
+    @apply  p-2 text-gray-800 rounded-lg shadow-md mb-2   bg-gray-400   w-full justify-center items-center  text-center mx-5;
+  }
+  .dark{
+    @apply bg-[#3A0519];
   }
 }
 

@@ -151,10 +151,10 @@ const TypeArea = ({ id }: { id: string }) => {
 
   return (
     <>
-      <div className="flex flex-col h-4/5 bg-gray-800 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray] align-bottom ">
+      <div className="flex flex-col h-4/5 bg-dark2-500 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray] align-bottom ">
 
 
-        <div className="flex  h-1/5 border-2 border-white-500 text-amber-50 m-3.5 justify-between rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white] px-5">
+        <div className="flex  h-1/5 border-2 border-white-500 bg-dark1-500 text-amber-50 m-3.5 justify-between rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white] px-5">
           <div className="flex flex-row-reverse content-bottom items-center text-xl ">
             {hasStartedTyping ? `Time: ${formatTime(currentTime)}` : "Time: 00:00"}
           </div>
@@ -166,7 +166,7 @@ const TypeArea = ({ id }: { id: string }) => {
             Mistakes: {mistakes}
           </div>
         </div>
-        <div className="flex flex-wrap h-4/5 border-2 border-white-500 bg-gray-800 text-amber-50 mx-3.5 my-3.5  rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white] px-5 py-5 overflow-auto ">
+        <div className="flex flex-wrap h-4/5 border-2 border-white-500 bg-dark1-500 text-amber-50 mx-3.5 my-3.5  rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white] px-5 py-5 overflow-auto ">
           {!end && Array.from({ length: l }).map((_, i) => (
             <div className='flex align-self-center max-h-7 my-1 mx-3 text-2xl' key={i}>
               {array[i].split("").map((char, idx) => (
