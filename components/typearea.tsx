@@ -176,7 +176,7 @@ const TypeArea = ({ id }: { id: string }) => {
                     correctVector[i] && correctVector[i][idx] === 1 ? "bg-green-900" : ""
                   }
                 >
-                  {char === " " ? "\u00A0" : char}
+                  {char === " " ? <span className="bg-green-900"  >{"\u00A0"}</span> : char}
                 </span>
               ))}
             </div>
