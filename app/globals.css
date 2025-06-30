@@ -26,7 +26,7 @@
 
 @layer components{
   .lsnbtn{
-    @apply  bg-dark3-500 p-2 text-white rounded-lg shadow-md mb-2  justify-center hover:bg-gray-400 transition-colors duration-300 text-center mx-3;
+    @apply  bg-dark2-500 border-1 border-amber-50 p-2 text-white rounded-lg shadow-md mb-2  justify-center hover:bg-gray-400 transition-colors duration-300 text-center mx-3;
   }
   .tbtn {
     @apply  p-2 rounded-lg shadow-md mb-2   hover:bg-green-700 transition-colors duration-300 text-center  w-full justify-center items-center bg-green-800 text-white  mx-5;
