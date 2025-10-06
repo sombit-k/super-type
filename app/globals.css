@@ -5,10 +5,28 @@
   --foreground: #171717;
 }
 
+@layer components {
+  .modern-btn {
+    @apply relative inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:shadow-amber-500/25 hover:from-amber-400 hover:to-orange-500 transform hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+  
+  .modern-btn-secondary {
+    @apply relative inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-600 text-white font-semibold rounded-lg border border-slate-500 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/10 transform hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+  
+  .modern-btn-outline {
+    @apply relative inline-flex items-center justify-center px-4 py-2 bg-transparent border-2 border-amber-500 text-amber-500 font-semibold rounded-lg hover:bg-amber-500 hover:text-white hover:shadow-lg hover:shadow-amber-500/25 transform hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+  
+  .dark{
+    @apply bg-[#3A0519];
+  }
+} 
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 @theme {
@@ -43,5 +61,65 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Selection colors */
+::selection {
+  background-color: #fbbf24;
+  color: #1e293b;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out;
+}
+
+/* Modal overlay styles */
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999 !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  position: relative !important;
+  z-index: 100000 !important;
 }

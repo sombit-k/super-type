@@ -1,58 +1,119 @@
-"use server"
-import React from 'react'
-import Link from 'next/link'
+"use client";
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Play, Target, Clock, CheckCircle2, Keyboard, Lightbulb } from 'lucide-react';
+import { BeautifulButton } from './ui/beautiful-button';
+
 const Instructions = ({ id }: { id: string }) => {
     return (
-        <>
-            <div className="flex flex-col h-full bg-gray-900 text-amber-50 rounded-xl shadow-[0_0_1px_1px_gray]">
-                {/* <div className="grid grid-cols-4  gap-4 h-full border-2 border-white-500 text-amber-50 m-3.5  rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white]">
-
-                    <div className="bg-pink-600 col-span-4 h-1/2 ">
-                        01
-                    </div>
-                    <div className=" row-span-2">
-                        <div className="bg-pink-800">02</div>
-
-                        <div className="bg-pink-900">03</div>
-                    </div>
-                </div> */}
-
-
-                <div className="flex flex-col gap-4 h-full border-2 border-white-500 text-amber-50 m-3.5  rounded-xl shadow-xl-20 shadow-[0_0_6px_1px_white]">
-
-                    <div className="bg-pink-600  h-1/10 mx-3 mt-3 flex justify-center items-center">
-                        <div>
-                            Instructions
+        <div className="h-full">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl h-full overflow-hidden"
+            >
+                {/* Header */}
+                <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-b border-slate-700 p-6">
+                    <div className="flex items-center space-x-3">
+                        <div className="p-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-lg">
+                            <Lightbulb className="h-6 w-6 text-white" />
                         </div>
+                        <h2 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                            Lesson Instructions
+                        </h2>
                     </div>
-                    <div className="flex flex-row bg-pink-800 h-7/10 mx-3 ">
-                        <div className="w-1/2 bg-pink-600 p-3 border mr-0.5">
-                        <h1>Some general Instructions to keep in mind:</h1>
-                        <ul className="list-disc pl-5">
-                            <li>Make sure to place the fingers on the correct orientation</li>
-                            <li>Click on the Start button below to start this excercise</li>
-                            <li>Timer will start automatically once the first letter is placed</li>
-                            <li>Try finishing this exercise within 60 seconds with no mistakes before moving to the next exercise</li>
-                            
-                        </ul>
-
-                        </div>
-                        <div className="w-1/2 bg-pink-600 p-3 border ml-0.5">2</div>
-                    </div>
-                    <div className="bg-pink-600  h-1/10 mx-3 mb-3 flex justify-center items-center">
-                        <div>
-                            <Link href={`/practice/${id}`} className="lsnbtn" key={id} >
-                                Start This excercise
-                            </Link>
-                        </div>
-                    </div>
-
                 </div>
 
+                {/* Content */}
+                <div className="p-6 h-full flex flex-col">
+                    <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        
+                        {/* General Instructions */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="bg-slate-800/30 rounded-lg p-6 border border-slate-600/50"
+                        >
+                            <div className="flex items-center space-x-2 mb-4">
+                                <Keyboard className="h-5 w-5 text-amber-400" />
+                                <h3 className="text-lg font-semibold text-white">General Instructions</h3>
+                            </div>
+                            <ul className="space-y-3 text-slate-300">
+                                <li className="flex items-start space-x-3">
+                                    <CheckCircle2 className="h-4 w-4 text-green-400 mt-1 flex-shrink-0" />
+                                    <span>Place your fingers on the correct home row position</span>
+                                </li>
+                                <li className="flex items-start space-x-3">
+                                    <CheckCircle2 className="h-4 w-4 text-green-400 mt-1 flex-shrink-0" />
+                                    <span>Click the Start button below to begin this exercise</span>
+                                </li>
+                                <li className="flex items-start space-x-3">
+                                    <CheckCircle2 className="h-4 w-4 text-green-400 mt-1 flex-shrink-0" />
+                                    <span>Timer starts automatically when you type the first letter</span>
+                                </li>
+                                <li className="flex items-start space-x-3">
+                                    <CheckCircle2 className="h-4 w-4 text-green-400 mt-1 flex-shrink-0" />
+                                    <span>Complete the exercise within 60 seconds with minimal mistakes</span>
+                                </li>
+                            </ul>
+                        </motion.div>
 
-            </div>
-        </>
-    )
+                        {/* Tips & Goals */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="bg-slate-800/30 rounded-lg p-6 border border-slate-600/50"
+                        >
+                            <div className="flex items-center space-x-2 mb-4">
+                                <Target className="h-5 w-5 text-amber-400" />
+                                <h3 className="text-lg font-semibold text-white">Tips & Goals</h3>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="flex items-center space-x-3 p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
+                                    <Clock className="h-5 w-5 text-amber-400" />
+                                    <div>
+                                        <p className="text-sm font-medium text-amber-300">Time Goal</p>
+                                        <p className="text-xs text-slate-400">Complete within 60 seconds</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-3 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
+                                    <Target className="h-5 w-5 text-green-400" />
+                                    <div>
+                                        <p className="text-sm font-medium text-green-300">Accuracy Goal</p>
+                                        <p className="text-xs text-slate-400">Minimize typing errors</p>
+                                    </div>
+                                </div>
+                                <div className="text-sm text-slate-400 bg-slate-700/30 p-3 rounded-lg">
+                                    <p className="font-medium text-slate-300 mb-1">Pro Tip:</p>
+                                    Focus on accuracy first, speed will come naturally with practice!
+                                </div>
+                            </div>
+                        </motion.div>
+
+                    </div>
+
+                    {/* Start Button */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="mt-6 flex justify-center"
+                    >
+                        <Link href={`/practice/${id}`}>
+                            <BeautifulButton variant="primary" size="lg" className="px-8">
+                                <Play className="h-5 w-5 mr-2" />
+                                Start This Exercise
+                            </BeautifulButton>
+                        </Link>
+                    </motion.div>
+                </div>
+            </motion.div>
+        </div>
+    );
 }
 
 export default Instructions

@@ -198,14 +198,25 @@ const TypeArea = ({ id }: { id: string }) => {
 
         </div>
       </div>
-      <div className="  h-1/5 mx-3 my-3 flex justify-between items-center">
-        <div className=" justify-center items-center mr-0">
-          <button onClick={handleButtonClick} value="Focus" className="tbtn" key={id} >
+      <div className="h-1/5 mx-3 my-3 flex justify-between items-center">
+        <div className="justify-center items-center mr-0">
+          <button 
+            onClick={handleButtonClick} 
+            value="Focus" 
+            className="modern-btn-secondary px-6 py-3"
+            key={id}
+          >
             Focus Mode
           </button>
         </div>
-        <div className="bg-black-100 mx-5">
-          <button onClick={handleButtonClick} value="Start" className={end ? "tbtn" : "dtbtn"} key={id} >
+        <div className="mx-5">
+          <button 
+            onClick={handleButtonClick} 
+            value="Start" 
+            className={end ? "modern-btn px-6 py-3" : "modern-btn-outline px-6 py-3 opacity-50 cursor-not-allowed"}
+            key={id}
+            disabled={!end}
+          >
             Restart
           </button>
         </div>
